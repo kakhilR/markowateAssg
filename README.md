@@ -1,4 +1,5 @@
 # markowateAssg
 
-to run server do npm install then npm start
-to run client do npm install then npm start
+
+> To run the server do npm install and then npm start.
+> To run the client do npm install and then npm start.
