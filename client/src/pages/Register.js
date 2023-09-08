@@ -15,7 +15,6 @@ const Register= (props)=>{
         axios.post('http://localhost:8000/api/register',{
             name, email, password
         }).then(res=>{
-            console.log(res)
             if(res.data.success===true){
                 alert(res.data.message)
                 // history('/login')

@@ -5,7 +5,7 @@ import { databaseConnection } from './models/connection.js';
 import { userRoutes } from './routes/user.js';
 const app = express();
 
-const PORT = 8000;
+const Port = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(express.urlencoded());
@@ -22,6 +22,6 @@ agendaJob.now('firstJob',{username:'kumar'});
 app.use('/api',userRoutes);
 
 
-app.listen(PORT,()=>{
-    console.log(`listening on port ${PORT}`)
+app.listen(Port,()=>{
+    console.log(`listening on port ${Port}`)
 })

@@ -22,12 +22,9 @@ const Login = (props)=>{
         }).then(res=>{
             console.log(res)
             if(res.data.success===false){
-                console.log(res,"validation failed")
                 alert(res.data.message)
             }else{
-                console.log(res,"res")
                 alert(res.data.message)
-                console.log(res.data)
                 localStorage.setItem('token',res.data.data.token)
                 history('/users')
                 

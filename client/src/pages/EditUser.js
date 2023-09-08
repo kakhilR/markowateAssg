@@ -33,7 +33,6 @@ const EditUser = (props)=>{
         if(response.data.success===true){
             alert(response.data.message);
         }
-        console.log(JSON.stringify(response.data));
       })
       .catch((error) => {
         console.log(error);

@@ -19,8 +19,7 @@ export default function UserTable() {
     }).catch(err=>{
         console.log(err);
     })
-}
-  console.log(row,"row")
+  }
 
 
 const deleteUser = async (userId) =>{
@@ -33,7 +32,6 @@ const deleteUser = async (userId) =>{
         if(res.success===true){
           document.getElementById(userId).parentElement.parentElement.remove()
           alert(res.data.message)
-          // window.location.reload(false)
         }else{
           alert(res.data.message)
         }

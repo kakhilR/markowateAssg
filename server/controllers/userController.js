@@ -27,15 +27,11 @@ export const loginUser = async (req,res)=>{
     const {email,password} = req.body;
     try{
         const existingUser = await UserModel.findOne({email: email});
-        console.log(
-            existingUser,"exists",
-        )
+
         if(!existingUser){
             return res.status(400).send({success:false, message: "Failed! Username not found" });
         }
-        console.log(typeof(existingUser.password))
         if(existingUser.password===password){
-            console.log("password matched")
             const token = await GenerateSecretToken({id:existingUser.id});
             return res.status(200).send({success:true,data:{id:existingUser.id,token},message:'success'})
         }else{
@@ -60,7 +56,6 @@ export const getUsers = async ( req,res)=>{
 
 export const getUsersById = async ( req,res)=>{
     const id = req.params.id;
-    console.log(id,"id")
     try{
         const user = await UserModel.findById(id);
         if(!user){
@@ -74,10 +69,8 @@ export const getUsersById = async ( req,res)=>{
 
 export const updateUser = async(req,res)=>{
     const id = req.params.id;
-    console.log(id,"update user")
     try{
         const {name,email} = req.body;
-        console.log(req.body)
         const findUser = await UserModel.findById(id);
         if(!findUser){
             return res.status(404).send({success:false, message: "Not found user with id " + id });
