@@ -1,10 +1,12 @@
 import dotEnv from 'dotenv';
 import jwt from 'jsonwebtoken';
 
-
 dotEnv.config();
+
+
 export const GenerateSecretToken = async (payload) => {
     try {
+        console.log(process.env.secret_key,"key")
       return await jwt.sign({id:payload.id}, process.env.secret_key, { expiresIn: "3d" });
     } catch (error) {
       console.log(error);
@@ -15,7 +17,6 @@ export const GenerateSecretToken = async (payload) => {
 const ValidateSecretToken = async (req)=>{
     try{
         const token = req.get("Authorization");
-        console.log(token,"from middle ware");
         const payload = await jwt.verify(token.split(" ")[1], process.env.secret_key);
         req.user = payload;
         return true;
