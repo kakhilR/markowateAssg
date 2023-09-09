@@ -35,6 +35,7 @@ const EditUser = (props)=>{
         }
       })
       .catch((error) => {
+        alert(error.data.message);
         console.log(error);
       });
     }
